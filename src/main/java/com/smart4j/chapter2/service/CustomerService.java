@@ -18,7 +18,7 @@ public class CustomerService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
 
-    public List<Customer> getCustomerList(String keyword) {
+    public List<Customer> getCustomerList() {
 
         String sql = "SELECT * FROM customer";
         return DatabaseHelper.queryEntityList(Customer.class, sql);
