@@ -1,8 +1,10 @@
 package com.smart4j.chapter2.test;
 
+import com.smart4j.chapter2.helper.DatabaseHelper;
 import com.smart4j.chapter2.model.Customer;
 import com.smart4j.chapter2.service.CustomerService;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -18,13 +20,15 @@ public class CustomerServiceTest {
     public CustomerServiceTest() {
         this.customerService = new CustomerService();
     }
-    public void init() {
-        // TODO
+    @Before
+    public void init() throws Exception {
+        String file = "sql/customer_insert.sql";
+        DatabaseHelper.executeSqlFile(file);
     }
     @Test
     public void getCustomerListTest() throws Exception {
         List<Customer> customerList = customerService.getCustomerList("");
-        Assert.assertEquals(2, customerList.size());
+        Assert.assertEquals(3, customerList.size());
 
     }
     @Test
